@@ -1,15 +1,16 @@
 const express = require('express');
 const routes = express.Router();
-const productController = require('./controllers/ProductController');
+const routesProduct = require('./routesProduct');
+// const productController = require('./controllers/ProductController');
 const areaController = require('./controllers/AreaController');
 const cargoController = require('./controllers/CargoController');
+const beneficioController = require('./controllers/BeneficioController');
 
-routes.get('/products', productController.findAll);
-routes.get('/products/:id', productController.findById);
-routes.post('/products', productController.create);
-routes.put('/products/:id', productController.update);
-routes.delete('/products/:id', productController.delete);
-
+// routes.get('/products', productController.findAll);
+// routes.get('/products/:id', productController.findById);
+// routes.post('/products', productController.create);
+// routes.put('/products/:id', productController.update);
+// routes.delete('/products/:id', productController.delete);
 
 routes.get('/areas', areaController.findAll);
 routes.get('/areas/:id', areaController.findById);
@@ -23,18 +24,10 @@ routes.post('/cargos', cargoController.create);
 routes.put('/cargos/:id', cargoController.update);
 routes.delete('/cargos/:id', cargoController.delete);
 
-// const ProductDao = mongoose.model('Product')
-// criando rota raiz
-routes.get('/', (req, res) => {
+routes.get('/beneficios', beneficioController.findAll);
+routes.get('/beneficios/:id', beneficioController.findById);
+routes.post('/beneficios', beneficioController.create);
+routes.put('/beneficios/:id', beneficioController.update);
+routes.delete('/beneficios/:id', beneficioController.delete);
 
-    // ProductDao.create({
-    //     title: 'Node API',
-    //     description: 'primeira api node',
-    //     url: 'www.google.com'
-    // })
-
-    return res.send('Hello teste')
-});
-
-
-module.exports = routes;
+module.exports = [routes, routesProduct];
